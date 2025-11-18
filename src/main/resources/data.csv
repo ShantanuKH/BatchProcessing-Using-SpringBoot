@@ -1,0 +1,76 @@
+EmployeeID,Name,Department,StartDate,EndDate
+1001,James Anderson,Engineering,2018-03-15,
+1002,Maria Rodriguez,Marketing,2019-01-10,2023-06-30
+1003,David Smith,Sales,2017-07-22,
+1004,Emily Chen,Human Resources,2020-11-05,2024-02-15
+1005,Michael Johnson,IT Support,2021-05-20,
+1006,Sarah Connor,Operations,2016-09-01,2022-12-01
+1007,Robert Taylor,Finance,2022-02-14,
+1008,Jessica White,Engineering,2019-08-30,
+1009,William Brown,Legal,2015-04-12,2021-10-10
+1010,Linda Davis,Sales,2018-12-01,
+1011,Richard Wilson,Marketing,2020-03-20,2022-08-15
+1012,Thomas Moore,Engineering,2021-06-10,
+1013,Barbara Jackson,IT Support,2019-09-15,
+1014,Patricia Martin,Finance,2017-11-23,2023-05-20
+1015,Jennifer Lee,Operations,2022-01-05,
+1016,Charles Perez,Human Resources,2018-04-18,2021-07-30
+1017,Christopher Thompson,Sales,2019-07-12,
+1018,Daniel Garcia,Engineering,2020-02-28,
+1019,Paul Martinez,Legal,2016-05-30,2023-11-11
+1020,Mark Robinson,Marketing,2021-08-19,
+1021,Donald Clark,IT Support,2019-10-25,2022-04-05
+1022,Elizabeth Rodriguez,Finance,2017-03-14,
+1023,George Lewis,Sales,2020-09-09,2024-01-12
+1024,Kenneth Walker,Operations,2022-04-01,
+1025,Steven Hall,Engineering,2018-06-20,
+1026,Edward Allen,Human Resources,2019-11-11,2021-12-31
+1027,Brian Young,Marketing,2021-01-15,
+1028,Ronald Hernandez,IT Support,2017-08-05,2020-09-20
+1029,Anthony King,Legal,2022-07-07,
+1030,Kevin Wright,Finance,2018-02-25,
+1031,Jason Lopez,Sales,2019-05-14,2023-02-28
+1032,Matthew Hill,Engineering,2020-10-30,
+1033,Gary Scott,Operations,2016-12-12,2019-06-15
+1034,Timothy Green,Marketing,2021-04-22,
+1035,Jose Adams,Human Resources,2018-09-05,
+1036,Larry Baker,IT Support,2019-12-18,2022-11-05
+1037,Jeffrey Gonzalez,Sales,2017-01-20,
+1038,Frank Nelson,Finance,2022-03-10,
+1039,Scott Carter,Engineering,2020-06-05,2023-09-30
+1040,Eric Mitchell,Legal,2015-08-15,
+1041,Stephen Perez,Operations,2019-02-22,
+1042,Andrew Roberts,Marketing,2021-09-12,2024-03-01
+1043,Raymond Turner,IT Support,2018-05-08,
+1044,Gregory Phillips,Sales,2017-10-14,2020-01-20
+1045,Joshua Campbell,Engineering,2022-11-01,
+1046,Jerry Parker,Human Resources,2019-04-25,
+1047,Dennis Evans,Finance,2020-07-19,2023-08-10
+1048,Walter Edwards,Legal,2016-06-06,
+1049,Patrick Collins,Marketing,2021-02-28,
+1050,Peter Stewart,Operations,2018-11-30,2021-05-15
+1051,Harold Sanchez,IT Support,2019-06-10,
+1052,Douglas Morris,Sales,2020-12-05,
+1053,Henry Rogers,Engineering,2017-04-01,2019-08-20
+1054,Carl Reed,Finance,2022-05-15,
+1055,Arthur Cook,Human Resources,2018-01-18,2022-09-01
+1056,Ryan Morgan,Marketing,2021-10-20,
+1057,Roger Bell,Legal,2016-09-25,
+1058,Joe Murphy,Operations,2019-03-05,2023-04-12
+1059,Juan Bailey,IT Support,2020-08-14,
+1060,Jack Rivera,Engineering,2017-12-22,2021-06-30
+1061,Albert Cooper,Sales,2022-09-01,
+1062,Jonathan Richardson,Finance,2018-10-10,
+1063,Justin Cox,Human Resources,2019-07-25,2020-11-15
+1064,Terry Howard,Marketing,2021-03-15,
+1065,Gerald Ward,Operations,2016-11-11,2019-12-20
+1066,Keith Torres,IT Support,2022-06-20,
+1067,Samuel Peterson,Legal,2017-05-05,2023-01-10
+1068,Willie Gray,Engineering,2020-01-30,
+1069,Ralph Ramirez,Sales,2018-08-15,
+1070,Lawrence James,Finance,2021-12-10,2024-02-01
+1071,Nicholas Watson,Marketing,2019-09-30,
+1072,Roy Brooks,Human Resources,2017-02-14,2020-05-25
+1073,Benjamin Kelly,IT Support,2022-08-05,
+1074,Bruce Sanders,Operations,2018-06-12,
+1075,Brandon Price,Engineering,2020-11-22,2023-10-15
