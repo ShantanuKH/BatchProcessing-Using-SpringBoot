@@ -73,8 +73,18 @@ It highlights the following:
 This confirms that the batch job ran smoothly from start to end with correct processing and no failures.
 
 <div style="text-align:center;">
-    <img src="https://raw.githubusercontent.com/ShantanuKH/BatchProcessing-Using-SpringBoot/refs/heads/master/Screenshots/console.png" alt="Image" style="width:400px; height:auto;">
+    <img src="https://raw.githubusercontent.com/ShantanuKH/BatchProcessing-Using-SpringBoot/refs/heads/master/Screenshots/console.png" alt="Console Output" style="width:400px; height:auto;">
 </div>
 
+---
 
+## ⚙️ Don't Forget to Update Your `application.properties` File
 
+Add your MySQL database configuration (URL, username, and password) in the `application.properties` file so Spring Boot can connect to your database properly.
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/YOUR_DATABASE_NAME
+spring.datasource.username=YOUR_USERNAME
+spring.datasource.password=YOUR_PASSWORD
+
+spring.batch.jdbc.initialize-schema=always
