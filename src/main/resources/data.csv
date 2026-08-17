@@ -1,5 +1,5 @@
 EmployeeID,Name,Department,StartDate,EndDate
-1001,James Anderson,Engineering,2018-03-15,
+1001,James Anderson,Engineering,invalid,
 1002,Maria Rodriguez,Marketing,2019-01-10,2023-06-30
 1003,David Smith,Sales,2017-07-22,
 1004,Emily Chen,Human Resources,2020-11-05,2024-02-15
