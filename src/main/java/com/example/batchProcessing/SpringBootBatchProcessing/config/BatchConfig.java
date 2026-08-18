@@ -53,21 +53,18 @@ public class BatchConfig {
                 .processor(processor)
                 .writer(writer)
 
-                // Enable fault tolerant processing
                 .faultTolerant()
 
-                // Skip validation errors
                 .skip(InvalidEmployeeDataException.class)
 
-                // Maximum skipped records
                 .skipLimit(10)
 
-                // Register as StepExecutionListener
+                // Register StepExecutionListener
                 .listener(
                         (StepExecutionListener) batchSkipListener
                 )
 
-                // Register as SkipListener
+                // Register SkipListener
                 .listener(
                         (SkipListener<employee, employee>) batchSkipListener
                 )
@@ -106,30 +103,31 @@ public class BatchConfig {
 
         return new JdbcBatchItemWriterBuilder<employee>()
                 .sql("""
-                        INSERT INTO Employees
+                        INSERT INTO employees
                         (
-                            EmployeeID,
-                            Name,
-                            Department,
-                            StartDate,
-                            EndDate,
-                            Duration
+                            employee_id,
+                            name,
+                            department,
+                            start_date,
+                            end_date,
+                            duration
                         )
                         VALUES
                         (
                             :employeeID,
                             :name,
                             :department,
-                            :startDate,
-                            :endDate,
+                            :startDateValue,
+                            :endDateValue,
                             :totalDurationInCompany
                         )
-                        ON DUPLICATE KEY UPDATE
-                            Name = VALUES(Name),
-                            Department = VALUES(Department),
-                            StartDate = VALUES(StartDate),
-                            EndDate = VALUES(EndDate),
-                            Duration = VALUES(Duration)
+                        ON CONFLICT (employee_id)
+                        DO UPDATE SET
+                            name = EXCLUDED.name,
+                            department = EXCLUDED.department,
+                            start_date = EXCLUDED.start_date,
+                            end_date = EXCLUDED.end_date,
+                            duration = EXCLUDED.duration
                         """)
                 .dataSource(dataSource)
                 .beanMapped()

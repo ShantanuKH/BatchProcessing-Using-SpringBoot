@@ -1,18 +1,34 @@
 package com.example.batchProcessing.SpringBootBatchProcessing.model;
 
+import java.time.LocalDate;
+
 public class employee {
 
     private int employeeID;
     private String name;
     private String department;
+
+    // Raw values coming from CSV
     private String startDate;
     private String endDate;
-    private String totalDurationInCompany;
+
+    // Parsed values used by PostgreSQL
+    private LocalDate startDateValue;
+    private LocalDate endDateValue;
+
+    // Duration stored as number of days
+    private int totalDurationInCompany;
 
     public employee() {
     }
 
-    public employee(int employeeID, String name, String department, String startDate, String endDate) {
+    public employee(
+            int employeeID,
+            String name,
+            String department,
+            String startDate,
+            String endDate) {
+
         this.employeeID = employeeID;
         this.name = name;
         this.department = department;
@@ -60,11 +76,27 @@ public class employee {
         this.endDate = endDate;
     }
 
-    public String getTotalDurationInCompany() {
+    public LocalDate getStartDateValue() {
+        return startDateValue;
+    }
+
+    public void setStartDateValue(LocalDate startDateValue) {
+        this.startDateValue = startDateValue;
+    }
+
+    public LocalDate getEndDateValue() {
+        return endDateValue;
+    }
+
+    public void setEndDateValue(LocalDate endDateValue) {
+        this.endDateValue = endDateValue;
+    }
+
+    public int getTotalDurationInCompany() {
         return totalDurationInCompany;
     }
 
-    public void setTotalDurationInCompany(String totalDurationInCompany) {
+    public void setTotalDurationInCompany(int totalDurationInCompany) {
         this.totalDurationInCompany = totalDurationInCompany;
     }
 }

@@ -14,8 +14,6 @@ public class CustomItemProccessor implements ItemProcessor<employee, employee> {
     public employee process(employee item) {
 
         // Validate Employee ID
-        // employeeID is an int, so it cannot be null.
-        // We treat 0 or negative values as invalid.
         if (item.getEmployeeID() <= 0) {
 
             throw new InvalidEmployeeDataException(
@@ -53,6 +51,7 @@ public class CustomItemProccessor implements ItemProcessor<employee, employee> {
             );
         }
 
+        // Parse Start Date
         LocalDate startDate;
 
         try {
@@ -71,15 +70,14 @@ public class CustomItemProccessor implements ItemProcessor<employee, employee> {
             );
         }
 
+        // Parse End Date
         LocalDate endDate;
 
-        // If end date is empty, employee is considered active
+        // Empty end date means employee is currently active
         if (item.getEndDate() == null ||
                 item.getEndDate().trim().isEmpty()) {
 
             endDate = LocalDate.now();
-
-            item.setEndDate(null);
 
         } else {
 
@@ -109,23 +107,18 @@ public class CustomItemProccessor implements ItemProcessor<employee, employee> {
             );
         }
 
-        // Calculate duration
-        long days =
-                ChronoUnit.DAYS.between(
-                        startDate,
-                        endDate
-                );
+        // Store parsed dates
+        item.setStartDateValue(startDate);
+        item.setEndDateValue(endDate);
 
-        long years =
-                ChronoUnit.YEARS.between(
-                        startDate,
-                        endDate
-                );
+        // Calculate duration in days
+        long days = ChronoUnit.DAYS.between(
+                startDate,
+                endDate
+        );
 
-        String duration =
-                days + " days (" + years + " years)";
-
-        item.setTotalDurationInCompany(duration);
+        // PostgreSQL duration column is INTEGER
+        item.setTotalDurationInCompany((int) days);
 
         return item;
     }

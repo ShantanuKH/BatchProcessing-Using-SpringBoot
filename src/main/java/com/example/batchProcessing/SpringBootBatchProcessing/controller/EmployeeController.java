@@ -23,14 +23,14 @@ public class EmployeeController {
 
         String sql = """
                 SELECT
-                    EmployeeID,
-                    Name,
-                    Department,
-                    StartDate,
-                    EndDate,
-                    Duration
-                FROM Employees
-                ORDER BY EmployeeID
+                    employee_id,
+                    name,
+                    department,
+                    start_date,
+                    end_date,
+                    duration
+                FROM employees
+                ORDER BY employee_id
                 """;
 
         return jdbcTemplate.query(
@@ -40,22 +40,22 @@ public class EmployeeController {
                     employee emp = new employee();
 
                     emp.setEmployeeID(
-                            resultSet.getInt("EmployeeID"));
+                            resultSet.getInt("employee_id"));
 
                     emp.setName(
-                            resultSet.getString("Name"));
+                            resultSet.getString("name"));
 
                     emp.setDepartment(
-                            resultSet.getString("Department"));
+                            resultSet.getString("department"));
 
                     emp.setStartDate(
-                            resultSet.getString("StartDate"));
+                            resultSet.getString("start_date"));
 
                     emp.setEndDate(
-                            resultSet.getString("EndDate"));
+                            resultSet.getString("end_date"));
 
                     emp.setTotalDurationInCompany(
-                            resultSet.getString("Duration"));
+                            resultSet.getInt("duration"));
 
                     return emp;
                 }
