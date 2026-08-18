@@ -18,7 +18,9 @@ public class BatchSkipListener
 
     private Long executionId;
 
-    public BatchSkipListener(BatchErrorService batchErrorService) {
+    public BatchSkipListener(
+            BatchErrorService batchErrorService) {
+
         this.batchErrorService = batchErrorService;
     }
 
@@ -30,17 +32,20 @@ public class BatchSkipListener
     public void beforeStep(StepExecution stepExecution) {
 
         this.executionId =
-                stepExecution.getJobExecution().getId();
+                stepExecution
+                        .getJobExecution()
+                        .getId();
 
         System.out.println(
-                "Batch execution ID captured: " + executionId
+                "Batch execution ID captured: "
+                        + executionId
         );
     }
 
     @Override
-    public ExitStatus afterStep(StepExecution stepExecution) {
+    public ExitStatus afterStep(
+            StepExecution stepExecution) {
 
-        // Return null so Spring Batch keeps the existing step status.
         return null;
     }
 
@@ -49,10 +54,15 @@ public class BatchSkipListener
     // ---------------------------------------------------------
 
     @Override
-    public void onSkipInRead(Throwable throwable) {
+    public void onSkipInRead(
+            Throwable throwable) {
 
         BatchError error = new BatchError(
                 executionId,
+                null,
+                null,
+                null,
+                null,
                 null,
                 "READ_ERROR",
                 throwable.getMessage()
@@ -69,6 +79,10 @@ public class BatchSkipListener
         BatchError error = new BatchError(
                 executionId,
                 item.getEmployeeID(),
+                item.getName(),
+                item.getDepartment(),
+                item.getStartDate(),
+                item.getEndDate(),
                 "PROCESSING_ERROR",
                 throwable.getMessage()
         );
@@ -84,6 +98,10 @@ public class BatchSkipListener
         BatchError error = new BatchError(
                 executionId,
                 item.getEmployeeID(),
+                item.getName(),
+                item.getDepartment(),
+                item.getStartDate(),
+                item.getEndDate(),
                 "WRITE_ERROR",
                 throwable.getMessage()
         );

@@ -19,26 +19,44 @@ public class BatchErrorRepository {
 
         String sql = """
                 INSERT INTO batch_error
-                (execution_id, employee_id, error_type, error_message)
-                VALUES (?, ?, ?, ?)
+                (
+                    execution_id,
+                    employee_id,
+                    employee_name,
+                    department,
+                    start_date,
+                    end_date,
+                    error_type,
+                    error_message
+                )
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """;
 
         jdbcTemplate.update(
                 sql,
                 error.getExecutionId(),
                 error.getEmployeeId(),
+                error.getEmployeeName(),
+                error.getDepartment(),
+                error.getStartDate(),
+                error.getEndDate(),
                 error.getErrorType(),
                 error.getErrorMessage()
         );
     }
 
-    public List<BatchError> findByExecutionId(Long executionId) {
+    public List<BatchError> findByExecutionId(
+            Long executionId) {
 
         String sql = """
                 SELECT
                     id,
                     execution_id,
                     employee_id,
+                    employee_name,
+                    department,
+                    start_date,
+                    end_date,
                     error_type,
                     error_message,
                     created_at
@@ -52,7 +70,8 @@ public class BatchErrorRepository {
                 new Object[]{executionId},
                 (rs, rowNum) -> {
 
-                    BatchError error = new BatchError();
+                    BatchError error =
+                            new BatchError();
 
                     error.setId(
                             rs.getLong("id")
@@ -71,6 +90,22 @@ public class BatchErrorRepository {
                         error.setEmployeeId(employeeId);
                     }
 
+                    error.setEmployeeName(
+                            rs.getString("employee_name")
+                    );
+
+                    error.setDepartment(
+                            rs.getString("department")
+                    );
+
+                    error.setStartDate(
+                            rs.getString("start_date")
+                    );
+
+                    error.setEndDate(
+                            rs.getString("end_date")
+                    );
+
                     error.setErrorType(
                             rs.getString("error_type")
                     );
@@ -80,6 +115,7 @@ public class BatchErrorRepository {
                     );
 
                     if (rs.getTimestamp("created_at") != null) {
+
                         error.setCreatedAt(
                                 rs.getTimestamp("created_at")
                                         .toLocalDateTime()
