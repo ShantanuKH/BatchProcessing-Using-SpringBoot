@@ -4,6 +4,7 @@ import com.example.batchProcessing.SpringBootBatchProcessing.model.BatchError;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.util.List;
 
 @Repository
@@ -32,21 +33,43 @@ public class BatchErrorRepository {
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
                 """;
 
+        Date startDate = null;
+        Date endDate = null;
+
+        if (error.getStartDate() != null &&
+                !error.getStartDate().trim().isEmpty()) {
+
+            try {
+                startDate = Date.valueOf(error.getStartDate());
+            } catch (IllegalArgumentException ignored) {
+                // Keep NULL if date is invalid
+            }
+        }
+
+        if (error.getEndDate() != null &&
+                !error.getEndDate().trim().isEmpty()) {
+
+            try {
+                endDate = Date.valueOf(error.getEndDate());
+            } catch (IllegalArgumentException ignored) {
+                // Keep NULL if date is invalid
+            }
+        }
+
         jdbcTemplate.update(
                 sql,
                 error.getExecutionId(),
                 error.getEmployeeId(),
                 error.getEmployeeName(),
                 error.getDepartment(),
-                error.getStartDate(),
-                error.getEndDate(),
+                startDate,
+                endDate,
                 error.getErrorType(),
                 error.getErrorMessage()
         );
     }
 
-    public List<BatchError> findByExecutionId(
-            Long executionId) {
+    public List<BatchError> findByExecutionId(Long executionId) {
 
         String sql = """
                 SELECT
@@ -70,8 +93,7 @@ public class BatchErrorRepository {
                 new Object[]{executionId},
                 (rs, rowNum) -> {
 
-                    BatchError error =
-                            new BatchError();
+                    BatchError error = new BatchError();
 
                     error.setId(
                             rs.getLong("id")
@@ -81,6 +103,7 @@ public class BatchErrorRepository {
                             rs.getLong("execution_id")
                     );
 
+                    // Employee ID can be NULL for READ_ERROR
                     int employeeId =
                             rs.getInt("employee_id");
 
@@ -98,6 +121,7 @@ public class BatchErrorRepository {
                             rs.getString("department")
                     );
 
+                    // Keep dates as String in BatchError
                     error.setStartDate(
                             rs.getString("start_date")
                     );

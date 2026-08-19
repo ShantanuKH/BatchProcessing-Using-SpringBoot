@@ -81,8 +81,11 @@ public class BatchSkipListener
                 item.getEmployeeID(),
                 item.getName(),
                 item.getDepartment(),
+
+                // Raw CSV values are Strings
                 item.getStartDate(),
                 item.getEndDate(),
+
                 "PROCESSING_ERROR",
                 throwable.getMessage()
         );
@@ -100,8 +103,11 @@ public class BatchSkipListener
                 item.getEmployeeID(),
                 item.getName(),
                 item.getDepartment(),
+
+                // Raw CSV values are Strings
                 item.getStartDate(),
                 item.getEndDate(),
+
                 "WRITE_ERROR",
                 throwable.getMessage()
         );
